@@ -1,0 +1,12 @@
+/* styles.css */
+
+.dropdown-menu-scrollable {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.loading-spinner {
+  padding: 1rem;
+  text-align: center;
+  color: #666;
+}

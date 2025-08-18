@@ -1,0 +1,111 @@
+<div class="container">
+  <div class=" d-flex flex flex-column gap-4 mt-4 border rounded bg-body-tertiary px-3 py-4">
+    <div class=" d-flex flex flex-row gap-2 w-100">
+      <div class="d-flex gap-2 col-4 align-items-center">
+
+        <span class="fw-bold">Car Makes</span>
+        <div *ngIf="vehicleMakes$ | async as makes; else loading">
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>
+              {{ SelectedParts.SelectedMake ? SelectedParts.SelectedMake.name : 'Select a make' }}
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-scrollable">
+              @for (make of makes; track make.id) {
+                <button ngbDropdownItem (click)="onMakeSelect(make)">
+                  {{ make.name }}
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <ng-template #loading>
+          <div class="loading-spinner">Loading makes...</div>
+        </ng-template>
+      </div>
+      <div *ngIf=" SelectedParts.IsMakeSelected" class="d-flex  gap-2 justify-content-center">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="selectionMode"
+                 id="typeRadio"
+                 [(ngModel)]="SelectedMode"
+                 [value]="SelectionMode.Type">
+          <label class="form-check-label" for="typeRadio">Select by Type</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="selectionMode"
+                 id="yearRadio"
+                 [(ngModel)]="SelectedMode"
+                 [value]="SelectionMode.ModelYear">
+          <label class="form-check-label" for="yearRadio">Select by Year</label>
+        </div>
+
+
+      </div>
+    </div>
+    <div>
+      <div class="d-flex gap-2" *ngIf="SelectedMode===SelectionMode.Type  && SelectedParts.IsMakeSelected">
+        <span class="fw-bold"> Car Type </span>
+        <div *ngIf="vehicleTypes.length>0; else loading2">
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>
+              {{ SelectedParts.SelectedType ? SelectedParts.SelectedType.name : 'Select a type' }}
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-scrollable">
+              @for (type of vehicleTypes; track type.id) {
+                <button ngbDropdownItem (click)="onTypeSelect(type)">
+                  {{ type.name }}
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+        <ng-template #loading2>
+          <div class="loading-spinner">Loading types...</div>
+        </ng-template>
+      </div>
+      <div class="d-flex gap-2 justify-content-between" *ngIf="SelectedParts.IsMakeSelected && SelectedMode===SelectionMode.ModelYear">
+        <div class="d-flex gap-2 col-4 align-items-center">
+          <span class="fw-bold"> Model Year</span>
+          <app-year-dropdown
+            (SelectedYear)=" onSelectYear($event)"></app-year-dropdown>
+        </div>
+      </div>
+        <h4 class="mb-4 mt-4 text-primary">Vehicle List</h4>
+        <div class="container d-flex flex-column gap-1 mt-4 w-100" *ngIf="vehicles.length > 0;else noVehicles">
+
+        <div class="row g-3">
+          <div  *ngFor="let vehicle of vehicles">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex flex-column">
+                  <!-- Make Section -->
+                  <div class="mb-3">
+                    <h6 class="text-muted mb-1">Make</h6>
+                    <p class="h5 text-truncate">
+                      <i class="bi bi-car-front me-2 text-primary"></i>
+                      {{ vehicle.make.name || 'Not specified' }}
+                    </p>
+                  </div>
+
+                  <!-- Model Section -->
+                  <div>
+                    <h6 class="text-muted mb-1">Model</h6>
+                    <p class="h5 text-truncate">
+                      <i class="bi bi-tag me-2 text-success"></i>
+                      {{ vehicle.model.name || 'Not specified' }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noVehicles>
+        <div class="">No Vehicles...</div>
+      </ng-template>
+    </div>
+
+  </div>
+</div>

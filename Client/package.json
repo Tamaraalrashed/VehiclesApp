@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/cdk": "^20.1.6",
+    "@angular/cli": "^20.1.6",
+    "@ng-bootstrap/ng-bootstrap": "^19.0.1"
+  }
+}

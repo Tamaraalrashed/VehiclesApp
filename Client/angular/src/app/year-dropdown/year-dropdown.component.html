@@ -1,0 +1,15 @@
+  <div ngbDropdown class="d-inline-block">
+    <button type="button" class="btn btn-outline-primary" ngbDropdownToggle>
+      {{ selectedYear }}
+    </button>
+    <div ngbDropdownMenu class="dropdown-menu-scrollable"  >
+<ng-container *ngFor="let year of years">
+
+        <button ngbDropdownItem (click)="onYearChange(year)">
+          {{year }}
+        </button>
+</ng-container>
+
+    </div>
+  </div>
+
