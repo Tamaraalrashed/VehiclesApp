@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehiclesApp", "VehiclesApp\VehiclesApp.csproj", "{9D83B154-7AC5-4C9F-B12F-90C6204B0445}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7B27525F-9F4D-4AA8-A6D9-0889E6FD82C5}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{AE8DC5DC-C254-4976-8BE5-F1232CA88EB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D83B154-7AC5-4C9F-B12F-90C6204B0445}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D83B154-7AC5-4C9F-B12F-90C6204B0445}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D83B154-7AC5-4C9F-B12F-90C6204B0445}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D83B154-7AC5-4C9F-B12F-90C6204B0445}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE8DC5DC-C254-4976-8BE5-F1232CA88EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE8DC5DC-C254-4976-8BE5-F1232CA88EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE8DC5DC-C254-4976-8BE5-F1232CA88EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE8DC5DC-C254-4976-8BE5-F1232CA88EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
