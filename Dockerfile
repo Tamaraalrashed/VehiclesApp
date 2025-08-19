@@ -95,5 +95,9 @@ COPY --from=dotnet-build /app/publish ./
 COPY --from=angular-build /app/Client/angular/dist/ ./wwwroot/
 
 # Expose port
+ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
 ENTRYPOINT ["dotnet", "VehiclesApp.dll"]
+
+
+
