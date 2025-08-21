@@ -1,13 +1,16 @@
 import {inject, Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Make,Type,Vehicle } from '../Models/Vehicle';
+
+declare global {
+  interface Window { _env_: any; }
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
+  private baseurl = window._env_.API_URL;
 
-  baseurl=environment.apiUrl;
   private http=inject(HttpClient);
   getVehicleMakes(){
     return this.http.get<Make[]>(this.baseurl+'GetAllMakes');

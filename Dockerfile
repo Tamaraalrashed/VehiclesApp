@@ -81,7 +81,9 @@ COPY VehiclesApp/ ./VehiclesApp/
 COPY Entity/ ./Entity/
 
 # Publish the solution (creates /app/publish)
-RUN dotnet publish VehiclesApp.sln -c Release -o /app/publish
+
+RUN dotnet publish VehiclesApp/VehiclesApp.csproj -c Release -o /app/publish
+
 # ==============================
 # 3. Final Runtime Image
 # ==============================
@@ -92,12 +94,16 @@ WORKDIR /app
 COPY --from=dotnet-build /app/publish ./
 
 # Copy Angular build into wwwroot
-COPY --from=angular-build /app/Client/angular/dist/ ./wwwroot/
+
+COPY --from=angular-build /app/Client/angular/dist/angular/browser ./wwwroot/
 
 # Expose port
-ENV ASPNETCORE_URLS=http://+:8080
 EXPOSE 8080
-ENTRYPOINT ["dotnet", "VehiclesApp.dll"]
+ENV DOTNET_URLS=http://0.0.0.0:8080
+ENV API_URL=http://localhost:5000
+ENTRYPOINT ["sh", "-c", "sed -i 's|http://localhost:5000|'$API_URL'|g' ./wwwroot/config.js && dotnet VehiclesApp.dll"]
+
+
 
 
 

@@ -1,6 +1,0 @@
-﻿services:
-  vehiclesapp:
-    image: vehiclesapp
-    build:
-      context: .
-      dockerfile: VehiclesApp/Dockerfile

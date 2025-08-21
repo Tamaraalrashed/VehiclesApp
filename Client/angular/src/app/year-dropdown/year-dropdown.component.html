@@ -3,12 +3,11 @@
       {{ selectedYear }}
     </button>
     <div ngbDropdownMenu class="dropdown-menu-scrollable"  >
-<ng-container *ngFor="let year of years">
-
+        <ng-container *ngFor="let year of years">
         <button ngbDropdownItem (click)="onYearChange(year)">
           {{year }}
         </button>
-</ng-container>
+      </ng-container>
 
     </div>
   </div>
