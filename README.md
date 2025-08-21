@@ -9,6 +9,10 @@ A simple web app that lets users pick a car make and manufacture year, then see 
 -Package manager: npm
 
 To run the App locally pleas follow these steps:
+# Clone the repo root
+git clone https://github.com/Tamaraalrashed/VehiclesApp.git
+cd VehiclesApp
+
 # Build (from repo root)
 docker build -t vehicles-app:local .
 
